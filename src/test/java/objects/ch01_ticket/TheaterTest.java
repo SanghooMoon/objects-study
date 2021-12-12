@@ -21,7 +21,7 @@ class TheaterTest {
         소극장.enter(초대장_관람객);
 
         //then
-        Assertions.assertTrue(초대장_관람객_가방.hasInvitation(), "초대장 관람객은 티켓을 가지고있다");
+        Assertions.assertTrue(초대장_관람객_가방.hasTicket(), "초대장 관람객은 티켓을 가지고있다");
         Assertions.assertEquals(10000L, 초대장_관람객_가방.getAmount(), "현금을 지불하지 않았다.");
     }
 

@@ -37,7 +37,7 @@ public class Bag {
     }
 
     // 티켓 보유 여부 판단
-    private boolean hasTicket() {
+    public boolean hasTicket() {
         return ticket != null;
     }
 
