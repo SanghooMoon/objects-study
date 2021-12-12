@@ -19,28 +19,40 @@ public class Bag {
         this.invitation = invitation;
     }
 
+    public Long hold(Ticket ticket) {
+        // 초대장을 가진 관람객 : 초대장 -> 티켓 교환
+        if(hasInvitation()) {
+            setTicket(ticket);
+            return 0L;
+        } else { // 초대장이 없는 관람객 : 현금 -> 티켓 구매
+            minusAmount(ticket.getFee());
+            setTicket(ticket);
+            return ticket.getFee();
+        }
+    }
+
     // 초대장 보유 여부 판단
-    public boolean hasInvitation() {
+    private boolean hasInvitation() {
         return invitation != null;
     }
 
     // 티켓 보유 여부 판단
-    public boolean hasTicket() {
+    private boolean hasTicket() {
         return ticket != null;
     }
 
     // 초대장을 티켓으로 교환
-    public void setTicket(Ticket ticket) {
+    private void setTicket(Ticket ticket) {
         this.ticket = ticket;
     }
 
     // 현금 증가
-    public void plusAmount(Long amount) {
+    private void plusAmount(Long amount) {
         this.amount += amount;
     }
 
     // 현금 감소
-    public void minusAmount(Long amount) {
+    private void minusAmount(Long amount) {
         this.amount -= amount;
     }
 
