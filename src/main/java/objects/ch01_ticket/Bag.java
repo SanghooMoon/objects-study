@@ -44,4 +44,7 @@ public class Bag {
         this.amount -= amount;
     }
 
+    public Long getAmount() {
+        return amount;
+    }
 }
