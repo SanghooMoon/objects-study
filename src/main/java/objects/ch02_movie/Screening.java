@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 
 // 사용자들이 예매하는 대상인 "상영"
 public class Screening {
-    private Moive movie;
+    private Movie movie;
     private int sequence;
     private LocalDateTime whenScreened;
 
-    public Screening(Moive movie, int sequence, LocalDateTime whenScreened) {
+    public Screening(Movie movie, int sequence, LocalDateTime whenScreened) {
         this.movie = movie;
         this.sequence = sequence;
         this.whenScreened = whenScreened;
@@ -30,7 +30,7 @@ public class Screening {
     }
 
     // 영화를 예매하는 메서드
-    public Reservation resrve(Customer customer, int audienceCount) {
+    public Reservation reserve(Customer customer, int audienceCount) {
         return new Reservation(customer, this, calculateFee(audienceCount), audienceCount);
     }
 
