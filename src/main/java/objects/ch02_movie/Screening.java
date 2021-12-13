@@ -28,4 +28,15 @@ public class Screening {
     public Money getMovieFee() {
         return movie.getFee();
     }
+
+    // 영화를 예매하는 메서드
+    public Reservation resrve(Customer customer, int audienceCount) {
+        return new Reservation(customer, this, calculateFee(audienceCount), audienceCount);
+    }
+
+    // 요금을 계산하는 메서드
+    private Money calculateFee(int audienceCount) {
+        return movie.calculateMoveFee(this).timse(audienceCount);
+    }
+
 }
