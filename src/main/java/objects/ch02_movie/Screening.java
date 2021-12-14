@@ -36,7 +36,7 @@ public class Screening {
 
     // 요금을 계산하는 메서드
     private Money calculateFee(int audienceCount) {
-        return movie.calculateMoveFee(this).timse(audienceCount);
+        return movie.calculateMovieFee(this).times(audienceCount);
     }
 
 }
