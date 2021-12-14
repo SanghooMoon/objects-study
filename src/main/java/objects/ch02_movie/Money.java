@@ -40,4 +40,8 @@ public class Money {
         return amount.compareTo(other.amount) >= 0;
     }
 
+    // 테스트를 위해 getter 추가 FIXME : 테스트 시 형식의 문제가 있어 좋은 방법은 아닌 듯(equals 오버라이딩 등으로 리팩토링할 것)
+    public BigDecimal getAmount() {
+        return amount;
+    }
 }
