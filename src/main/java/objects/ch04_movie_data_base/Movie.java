@@ -17,44 +17,8 @@ public class Movie {
     private Money discountAmount;
     private double discountPercent;
 
-    public Money getFee() {
-        return fee;
-    }
-
-    public void setFee(Money fee) {
-        this.fee = fee;
-    }
-
-    public List<DiscountCondition> getDiscountConditionList() {
-        return discountConditionList;
-    }
-
-    public void setDiscountConditionList(List<DiscountCondition> discountConditionList) {
-        this.discountConditionList = discountConditionList;
-    }
-
     public MovieType getMovieType() {
         return movieType;
-    }
-
-    public void setMovieType(MovieType movieType) {
-        this.movieType = movieType;
-    }
-
-    public Money getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(Money discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
-    public double getDiscountPercent() {
-        return discountPercent;
-    }
-
-    public void setDiscountPercent(double discountPercent) {
-        this.discountPercent = discountPercent;
     }
 
     // 정책에 맞는 할인 금액 계산 메서드 : 금액 할인

@@ -1,5 +1,7 @@
 package objects.ch02_movie;
 
+import objects.ch04_movie_data_base.Customer;
+
 // 예매 정보
 public class Reservation {
     private Customer customer;

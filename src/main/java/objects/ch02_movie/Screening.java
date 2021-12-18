@@ -1,5 +1,7 @@
 package objects.ch02_movie;
 
+import objects.ch04_movie_data_base.Customer;
+
 import java.time.LocalDateTime;
 
 // 사용자들이 예매하는 대상인 "상영"
