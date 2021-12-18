@@ -3,6 +3,7 @@ package objects.ch04_movie_data_base;
 import objects.ch02_movie.Money;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 // 데이터 중심의 영화 예매 시스템 설계하기 - 영화
@@ -83,4 +84,19 @@ public class Movie {
         return fee;
     }
 
+    // 할인 여부를 판단하는 메서드 추가
+    public boolean isDiscountable(LocalDateTime whenScreened, int sequence) {
+        for(DiscountCondition condition : discountConditionList) {
+            if(condition.getType() == DiscountConditionType.PERIOD) {
+                if(condition.isDiscountable(whenScreened.getDayOfWeek(), whenScreened.toLocalTime())) {
+                    return true;
+                }
+            } else {
+                if(condition.isDiscountable(sequence)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
