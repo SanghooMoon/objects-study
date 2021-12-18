@@ -1,5 +1,7 @@
 package objects.ch04_movie_data_base;
 
+import objects.ch02_movie.Money;
+
 // 영화를 예매하기위한 클래스
 public class Reservation {
     private Customer customer;

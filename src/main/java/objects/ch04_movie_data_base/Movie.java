@@ -1,5 +1,7 @@
 package objects.ch04_movie_data_base;
 
+import objects.ch02_movie.Money;
+
 import java.time.Duration;
 import java.util.List;
 
