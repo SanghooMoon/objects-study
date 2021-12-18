@@ -13,6 +13,15 @@ public class DiscountCondition {
     private LocalTime startTime;
     private LocalTime endTime;
 
+    // 테스트를 위해 생성자 추가
+    public DiscountCondition(DiscountConditionType type, int sequence, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
+        this.type = type;
+        this.sequence = sequence;
+        this.dayOfWeek = dayOfWeek;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public DiscountConditionType getType() {
         return type;
     }
