@@ -52,4 +52,24 @@ public class DiscountCondition {
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
+
+    // 할인 조건을 판단하는 메서드 : 기간 조건
+    public boolean isDiscountable(DayOfWeek dayOfWeek, LocalTime time) {
+        if(type != DiscountConditionType.PERIOD) {
+            throw new IllegalArgumentException();
+        }
+
+        return this.dayOfWeek.equals(dayOfWeek) &&
+               this.startTime.compareTo(time) <= 0 &&
+               this.endTime.compareTo(time) >= 0;
+    }
+
+    // 할인 조건을 판단하는 메서드(오버로딩) : 순번 조건
+    public boolean isDiscountable(int sequence) {
+        if(type != DiscountConditionType.SEQUENCE) {
+            throw new IllegalArgumentException();
+        }
+
+        return this.sequence == sequence;
+    }
 }
