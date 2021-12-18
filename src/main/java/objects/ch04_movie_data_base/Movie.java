@@ -55,4 +55,32 @@ public class Movie {
     public void setDiscountPercent(double discountPercent) {
         this.discountPercent = discountPercent;
     }
+
+    // 정책에 맞는 할인 금액 계산 메서드 : 금액 할인
+    public Money calculateAmountDiscountedFee() {
+        if(movieType != MovieType.AMOUNT_DISCOUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        return fee.minus(discountAmount);
+    }
+
+    // 정책에 맞는 할인 금액 계산 메서드 : 비율 할인
+    public Money calculatePercentDiscountedFee() {
+        if(movieType != MovieType.PERCENT_DISCOUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        return fee.minus(fee.times(discountPercent));
+    }
+
+    // 정책에 맞는 할인 금액 계산 메서드 : 할인 X
+    public Money calculateNoneDiscountedFee() {
+        if(movieType != MovieType.NONE_DISCOUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        return fee;
+    }
+
 }
