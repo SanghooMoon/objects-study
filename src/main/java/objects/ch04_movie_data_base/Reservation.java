@@ -1,8 +1,8 @@
-package objects.ch02_movie;
+package objects.ch04_movie_data_base;
 
-import objects.ch04_movie_data_base.Customer;
+import objects.ch02_movie.Money;
 
-// 예매 정보
+// 영화를 예매하기위한 클래스
 public class Reservation {
     private Customer customer;
     private Screening screening;
@@ -15,4 +15,5 @@ public class Reservation {
         this.fee = fee;
         this.audienceCount = audienceCount;
     }
+
 }
