@@ -25,7 +25,12 @@ class EventTest {
         Event meeting = new Event("회의", LocalDateTime.of(2019,5,9,10,30), Duration.ofMinutes(30));
 
         assertFalse(meeting.isSatisfied(schedule));
-        assertTrue(meeting.isSatisfied(schedule)); // False가 나와야하는데 True가 나온다..  그 이유는 isSatisfied 메서드 내 Event를 변경하기 때문
+
+        // 명령과 쿼리를 분리
+        if(!meeting.isSatisfied(schedule)) {
+            meeting.reschedule(schedule);
+        }
+        assertTrue(meeting.isSatisfied(schedule));
     }
 
 
