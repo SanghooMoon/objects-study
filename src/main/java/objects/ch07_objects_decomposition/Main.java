@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Map;
 
 // 급여관리시스템
 public class Main {
@@ -19,11 +18,31 @@ public class Main {
 
     // 직원의 급여를 계산하자.
     public static void main(String[] args) throws IOException {
-        final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String name = br.readLine();
+        String oper = args[0];
+        String name = args[1];
 
+        switch (oper) {
+            case "pay" :
+                calculatePay(name);
+                break;
+            case "basePays" :
+                sumOfBasePays();
+                break;
+        }
+    }
+
+    private static void sumOfBasePays() {
+        int result = 0;
+        for(int pay : employeeInfos.values()) {
+            result += pay;
+        }
+        System.out.printf("직원 총 급여 : %d", result);
+
+    }
+
+    private static void calculatePay(String name) throws IOException {
         int taxRate = getTaxRate();
-        int pay = calculaterPayFor(name, taxRate);
+        int pay = calculatePayFor(name, taxRate);
         describeResult(name, pay);
     }
 
@@ -36,11 +55,12 @@ public class Main {
         return Integer.parseInt(taxRate);
     }
 
-    private static int calculaterPayFor(String name, int taxRate) {
+    private static int calculatePayFor(String name, int taxRate) {
         int basePay = employeeInfos.get(name);
 
         return basePay - (basePay * taxRate);
     }
+
     private static void describeResult(String name, int pay) {
         System.out.printf("이름 : %s, 급여 : %d", name, pay);
     }
