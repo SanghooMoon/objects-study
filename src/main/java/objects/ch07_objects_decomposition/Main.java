@@ -9,8 +9,10 @@ import java.util.List;
 // 급여관리시스템
 public class Main {
 
-    static final List<String> names = Arrays.asList("문상후", "홍길동", "가나다");
-    static final List<Double> pays = Arrays.asList(500d, 400d, 300d);
+    static final List<String> names = Arrays.asList("문상후", "홍길동", "가나다", "알바A", "알바B", "알바C");
+    static final List<Double> pays = Arrays.asList(500d, 400d, 300d, 1d, 1d, 1.5d);
+    static final List<Boolean> hourlys = Arrays.asList(false, false, false, true, true, true);
+    static final List<Integer> timeCards = Arrays.asList(0, 0, 0, 120, 120, 120);
 
     // 직원의 급여를 계산하자.
     public static void main(String[] args) throws IOException {
@@ -29,16 +31,25 @@ public class Main {
 
     private static void sumOfBasePays() {
         double result = 0;
-        for(double pay : pays) {
-            result += pay;
-        }
-        System.out.printf("직원 총 급여 : %.0f", result);
 
+        for(String name : names) {
+            if(!isHourly(name)) {
+                result += pays.get(names.indexOf(name));
+            }
+        }
+
+        System.out.printf("직원 총 급여 : %.0f", result);
     }
 
     private static void calculatePay(String name) throws IOException {
-        double taxRate = getTaxRate();
-        double pay = calculatePayFor(name, taxRate);
+        double taxRate = getTaxRate(), pay;
+
+        if(isHourly(name)) {
+            pay = calculateHourlyPayFor(name, taxRate);
+        } else {
+            pay = calculatePayFor(name, taxRate);
+        }
+
         describeResult(name, pay);
     }
 
@@ -55,6 +66,16 @@ public class Main {
         double basePay = pays.get(names.indexOf(name));
 
         return basePay - (basePay * taxRate);
+    }
+
+    private static double calculateHourlyPayFor(String name, double taxRate) {
+        int index = names.indexOf(name);
+        double basePay = pays.get(index) * timeCards.get(index);
+        return basePay - (basePay * taxRate);
+    }
+
+    private static boolean isHourly(String name) {
+        return hourlys.get(names.indexOf(name));
     }
 
     private static void describeResult(String name, double pay) {
